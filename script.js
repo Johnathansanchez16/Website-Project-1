@@ -1,10 +1,31 @@
 function check(element){
 let ring=new Audio('positive-response-81640.mp3');
 ring.play();
-ring.pause();
-ring.load();
-element.parentNode.parentNode.classList.toggle("clicked");
-element.parentNode.parentNode.parentNode.querySelector("#sublist-item-box").classList.toggle("clicked");
+ring.addEventListener('ended', function() {
+        ring.pause();
+        ring.load();
+    });
+var itemBox=element.parentNode.parentNode;
+itemBox.classList.toggle("clicked");
+var allSubtasks=itemBox.parentNode.querySelectorAll('#sublist-item-box');
+allSubtasks.forEach(function(child){
+if (child.style.display === 'none') {
+    child.style.display = 'block';
+  } else {
+    child.style.display = 'none';
+  }
+
+})
+}
+function checkSubtask(element){
+let ring=new Audio('positive-response-81640.mp3');
+ring.play();
+ring.addEventListener('ended', function() {
+        ring.pause();
+        ring.load();
+    });
+var itemBox=element.parentNode.parentNode;
+itemBox.classList.toggle("clicked");
 }
 
 function colorChange(element){
@@ -50,7 +71,15 @@ var subtask = element.closest('#sublist-item-box');
 subtask.parentNode.removeChild(subtask);
 }
 function addNewItem(event){
-if(event.keyCode==13){
+var value=document.querySelector('.new-item-prompt #input-box').value;
+if(event.keyCode==13&&(value=="")){
+document.querySelector("#error-message").style.display="block"
+setTimeout(function(){
+document.querySelector("#error-message").style.display="none";
+},5000);
+
+}
+if(event.keyCode==13&&!(value=="")){
 var newItem=document.querySelector('.item-box').cloneNode(true);
 input=document.querySelector('.new-item-prompt #input-box').value;
 document.querySelector('.new-item-prompt #input-box').value='';

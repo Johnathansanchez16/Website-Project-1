@@ -1,14 +1,10 @@
 
 body{
-background-image: linear-gradient(to right,#cbeabd, 	#769174);
+background-color:#d5f0d9;
 font-family:"Inter",sans-serif;
 }
 h1{
 font-family:"Inter",sans-serif;
-}
-p{
-text-align:center;
-font-size:20px;
 }
 .item-box{
 margin:15px auto 5px;
@@ -40,14 +36,16 @@ background-color:#869e8b;
 .clicked{
 color:#fff;
 text-shadow:0 0 10px #ffffff;
-box-shadow:0 0 9px #00ff2f;
 filter:blur(2px);
+}
+.display{
+display:block;
 }
 #category-box{
 display:inline-block;
 margin-left:6px;
 border-radius:10px;
-border: 2px solid black;
+border:2px solid black;
 width:100px;
 height:23px;
 overflow:hidden;
@@ -58,6 +56,7 @@ list-style:none;
 background:#8c9c8e;
 position:absolute;
 border-radius:10px;
+z-index:99;
 }
 .category-dropdown li{
 display:block;
@@ -180,4 +179,36 @@ border:none;
 outline:none;
 background-color:#e6ffe9;
 }
+.example{
+width:100px;
+height:60px;
+background-color:black;
+display:block;
+margin:0px auto 0px;
+}
+@media screen and (max-width: 640px) {
+  .item-box{
+    width:520px;
+  }
+  #due-date-box{
+  display:none;
+  }
+  #color-icon img{
+    opacity:1;
+    }
+}
+@media screen and (max-width: 545px) {
+  .item-box{
+    width:405px;
+  }
+  #category-box{
+      display:none;
+  }
+  #sublist-item-box{
+  width:305px;
+  }
+  #sublist-item-box #name-box{
+  width:230px;
+  }
 
+}
