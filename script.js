@@ -1,10 +1,16 @@
+
 function check(element){
-let ring=new Audio('positive-response-81640.mp3');
+var checked=element.getAttribute('checked');
+let ring=new Audio('chime.mp3');
+if(checked === 'false'){
 ring.play();
-ring.addEventListener('ended', function() {
-        ring.pause();
-        ring.load();
-    });
+
+element.setAttribute('checked','true');
+}
+else{
+element.setAttribute('checked','false')
+ring.load();
+}
 var itemBox=element.parentNode.parentNode;
 itemBox.classList.toggle("clicked");
 var allSubtasks=itemBox.parentNode.querySelectorAll('#sublist-item-box');
@@ -14,16 +20,21 @@ if (child.style.display === 'none') {
   } else {
     child.style.display = 'none';
   }
+});
 
-})
 }
 function checkSubtask(element){
-let ring=new Audio('positive-response-81640.mp3');
+var checked=element.getAttribute('checked');
+let ring=new Audio('chime.mp3');
+if(checked === 'false'){
 ring.play();
-ring.addEventListener('ended', function() {
-        ring.pause();
-        ring.load();
-    });
+
+element.setAttribute('checked','true');
+}
+else{
+element.setAttribute('checked','false')
+ring.load();
+}
 var itemBox=element.parentNode.parentNode;
 itemBox.classList.toggle("clicked");
 }
@@ -63,10 +74,14 @@ break;
 }
 }
 function removeItem(element){
+let swoosh=new Audio('swoosh.m4a');
+swoosh.play();
 var itemBox = element.closest('li');
 itemBox.remove();
 }
 function removeSubtask(element){
+let swoosh=new Audio('swoosh.m4a');
+swoosh.play();
 var subtask = element.closest('#sublist-item-box');
 subtask.parentNode.removeChild(subtask);
 }

@@ -179,12 +179,8 @@ border:none;
 outline:none;
 background-color:#e6ffe9;
 }
-.example{
-width:100px;
-height:60px;
-background-color:black;
-display:block;
-margin:0px auto 0px;
+.disable{
+display:none;
 }
 @media screen and (max-width: 640px) {
   .item-box{
