@@ -1,17 +1,16 @@
 
 function check(element){
-var checked=element.getAttribute('checked');
+var itemBox=element.parentNode;
+var checked=itemBox.getAttribute('checked');
 let ring=new Audio('chime.mp3');
 if(checked === 'false'){
 ring.play();
-
-element.setAttribute('checked','true');
+itemBox.setAttribute('checked','true');
 }
 else{
-element.setAttribute('checked','false')
+itemBox.setAttribute('checked','false')
 ring.load();
 }
-var itemBox=element.parentNode.parentNode;
 itemBox.classList.toggle("clicked");
 var allSubtasks=itemBox.parentNode.querySelectorAll('#sublist-item-box');
 allSubtasks.forEach(function(child){
@@ -35,14 +34,18 @@ else{
 element.setAttribute('checked','false')
 ring.load();
 }
-var itemBox=element.parentNode.parentNode;
+var itemBox=element.parentNode;
 itemBox.classList.toggle("clicked");
 }
 
 function colorChange(element){
+var checked=element.parentNode.parentNode.getAttribute('checked');
+if(checked==='false'){
 var dropList=element.parentNode.querySelector("#myDropList");
 dropList.classList.toggle("show");
 }
+}
+
 function colorSelect(color, element){
 var categoryInput=element.parentNode.parentNode.querySelector('#category-input');
 var categoryBox=element.parentNode.parentNode.parentNode.querySelector('#category-box');
@@ -72,19 +75,24 @@ categoryInput.style.backgroundColor="#c496ff";
 categoryBox.style.backgroundColor="#c496ff";
 break;
 }
+var dropList = element.parentNode;
+dropList.classList.toggle("show");
 }
+
 function removeItem(element){
 let swoosh=new Audio('swoosh.m4a');
 swoosh.play();
 var itemBox = element.closest('li');
 itemBox.remove();
 }
+
 function removeSubtask(element){
 let swoosh=new Audio('swoosh.m4a');
 swoosh.play();
 var subtask = element.closest('#sublist-item-box');
 subtask.parentNode.removeChild(subtask);
 }
+
 function addNewItem(event){
 var value=document.querySelector('.new-item-prompt #input-box').value;
 if(event.keyCode==13&&(value=="")){
@@ -92,7 +100,6 @@ document.querySelector("#error-message").style.display="block"
 setTimeout(function(){
 document.querySelector("#error-message").style.display="none";
 },5000);
-
 }
 if(event.keyCode==13&&!(value=="")){
 var newItem=document.querySelector('.item-box').cloneNode(true);
@@ -105,8 +112,12 @@ newElement.appendChild(newItem);
 document.querySelector('ul').appendChild(newElement);
 }
 }
+
 function newSubtask(element){
+var checked=element.parentNode.parentNode.getAttribute('checked');
+if(checked==='false'){
 var newItem=document.querySelector('#sublist-item-box').cloneNode(true);
 newItem.style.display="block";
 element.closest('ul li').appendChild(newItem);
+}
 }
