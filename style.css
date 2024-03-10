@@ -229,20 +229,30 @@ background-color:#e6fcff;
   #color-icon img{
     opacity:1;
     }
+  #sublist-item-box{
+    width:345px;
+  }
+  #sublist-item-box #name-box{
+  width:270px;
+  }
 }
 
 @media screen and (max-width: 545px) {
   .item-box{
-    width:405px;
+    width:370px;
   }
   #category-box{
       display:none;
   }
+  #name-box{
+  width:295px;
+
+  }
   #sublist-item-box{
-  width:305px;
+  width:270px;
   }
   #sublist-item-box #name-box{
-  width:230px;
+  width:195px;
   }
 
 }
